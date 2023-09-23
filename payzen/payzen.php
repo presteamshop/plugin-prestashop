@@ -1568,6 +1568,10 @@ class Payzen extends PaymentModule
             }
         } else {
             foreach ($other_payments as $option) {
+                if ($option['code'] === 'PSE' && $this->context->currency->iso_code !== 'COP') {
+                    continue;
+                }
+
                 $other = new PayzenOtherPayment();
                 $other->init($option['code'], $option['title'], $option['min_amount'], $option['max_amount']);
 

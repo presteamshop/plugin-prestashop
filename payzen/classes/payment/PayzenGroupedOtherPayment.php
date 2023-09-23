@@ -49,6 +49,10 @@ class PayzenGroupedOtherPayment extends AbstractPayzenPayment
 
         $options = array();
         foreach ($this->other_payments as $payment) {
+            if ($payment['code'] === 'PSE' && $this->context->currency->iso_code !== 'COP') {
+                continue;
+            }
+
             $title = is_array($payment['title']) ? $payment['title'][(int) $cart->id_lang] : $payment['title'];
 
             $option = array(
