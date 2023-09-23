@@ -49,7 +49,7 @@ class PayzenGroupedOtherPayment extends AbstractPayzenPayment
 
         $options = array();
         foreach ($this->other_payments as $payment) {
-            if ($payment['code'] === 'PSE' && $this->context->currency->iso_code !== 'COP') {
+            if ($payment['code'] === 'PSE' && Context::getContext()->currency->iso_code !== 'COP') {
                 continue;
             }
 
